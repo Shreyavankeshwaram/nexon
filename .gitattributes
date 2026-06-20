@@ -14,3 +14,6 @@ interior-designer/assets/brochure/Nexon_Digital_Brochure.pdf filter=lfs diff=lfs
 *.mkv filter=lfs diff=lfs merge=lfs -text
 *.zip filter=lfs diff=lfs merge=lfs -text
 *.rar filter=lfs diff=lfs merge=lfs -text
+
+# Keep this particular small compressed video in the repo (do not use LFS)
+interior-designer/assets/video/nexon-travenza-720.mp4 -filter -diff -merge -text
