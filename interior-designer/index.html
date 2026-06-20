@@ -7578,18 +7578,19 @@
                 </div>
                 <div class="col-lg-5">
                   <style>
-                    /* Location Highlights — ensure good contrast in dark themes */
-                    .lh-panel .lh-heading { color: #121212; }
-                    .lh-panel .lh-quick { color: #8a7a4b; }
+                    /* Location Highlights — force visible text to black across themes */
+                    .lh-panel .lh-heading { color: #000 !important; }
+                    .lh-panel .lh-quick { color: #000 !important; }
+                    /* Ensure theme classes don't override these labels */
                     body.theme-night .lh-panel .lh-heading,
-                    body.theme-cool .lh-panel .lh-heading { color: #ffffff !important; }
+                    body.theme-cool .lh-panel .lh-heading,
                     body.theme-night .lh-panel .lh-quick,
-                    body.theme-cool .lh-panel .lh-quick { color: #f5eecb !important; }
-                    /* Selection highlight for these headings — black background with white text */
+                    body.theme-cool .lh-panel .lh-quick { color: #000 !important; }
+                    /* Selection: keep text black and avoid bright selection backgrounds */
                     .lh-panel .lh-heading::selection,
-                    .lh-panel .lh-quick::selection { background: #000; color: #fff; }
+                    .lh-panel .lh-quick::selection { background: transparent; color: #000; }
                     .lh-panel .lh-heading::-moz-selection,
-                    .lh-panel .lh-quick::-moz-selection { background: #000; color: #fff; }
+                    .lh-panel .lh-quick::-moz-selection { background: transparent; color: #000; }
                   </style>
                   <div class="lh-panel" style="background:linear-gradient(180deg,#fff,#fbfaf5);border-radius:12px;padding:22px;box-shadow:0 22px 60px rgba(9,15,24,0.08);">
                     <p class="text-muted mb-3 lh-quick" style="letter-spacing:0.06em;font-weight:600;">Quick view</p>
