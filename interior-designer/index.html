@@ -29,6 +29,35 @@
   <link rel="stylesheet" href="../assets/css/master-interior-designer.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Performance: native touch scrolling and passive listener helper -->
+  <style>
+    /* Enable momentum scrolling on iOS and hint touch handling */
+    html, body, #smooth-wrapper, #smooth-content {
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-y;
+      overscroll-behavior-y: auto;
+    }
+    /* Improve font rendering and reduce paint chattiness */
+    * { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  </style>
+  <script>
+    (function(){
+      var supportsPassive = false;
+      try {
+        var opts = Object.defineProperty({}, 'passive', { get: function() { supportsPassive = true; } });
+        window.addEventListener('testPassive', null, opts);
+        window.removeEventListener('testPassive', null, opts);
+      } catch (e) {}
+      if (!supportsPassive) return;
+      var origAdd = EventTarget.prototype.addEventListener;
+      EventTarget.prototype.addEventListener = function(type, listener, options) {
+        if (options === undefined && (type === 'touchstart' || type === 'touchmove' || type === 'wheel' || type === 'mousewheel')) {
+          options = { passive: true };
+        }
+        return origAdd.call(this, type, listener, options);
+      };
+    })();
+  </script>
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Manrope:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
     rel="stylesheet">
