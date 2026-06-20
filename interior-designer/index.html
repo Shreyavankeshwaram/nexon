@@ -7103,9 +7103,13 @@
               .video__full.health-video video {
                 display: block;
                 width: 100%;
-                height: clamp(320px, 42vw, 600px);
+                max-width: 760px; /* constrain visual size */
+                margin: 0 auto; /* center inside wrapper */
+                height: auto; /* let width control height to keep aspect ratio */
                 object-fit: cover;
                 background: #000 !important;
+                border-radius: 10px;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.6);
               }
 
               /* Luxury badge overlay */
