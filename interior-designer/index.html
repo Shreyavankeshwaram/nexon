@@ -7586,9 +7586,25 @@
                     body.theme-cool .lh-panel .lh-heading,
                     body.theme-night .lh-panel .lh-quick,
                     body.theme-cool .lh-panel .lh-quick { color: #000 !important; }
+
+                    /* Defensive: clear any highlight/background on inner markup (mark, spans, highlight class) */
+                    .lh-panel .lh-quick,
+                    .lh-panel .lh-heading,
+                    .lh-panel .lh-quick *,
+                    .lh-panel .lh-heading *,
+                    .lh-panel .lh-quick mark,
+                    .lh-panel .lh-heading mark,
+                    .lh-panel .highlight,
+                    .lh-panel .highlight * {
+                      background: transparent !important;
+                      color: #000 !important;
+                      box-shadow: none !important;
+                      -webkit-text-fill-color: initial !important;
+                    }
+
                     /* Selection: keep text black and avoid bright selection backgrounds */
-                    .lh-panel .lh-heading::selection,
-                    .lh-panel .lh-quick::selection { background: transparent; color: #000; }
+                    .lh-panel .lh-heading::Selection,
+                    .lh-panel .lh-quick::Selection { background: transparent; color: #000; }
                     .lh-panel .lh-heading::-moz-selection,
                     .lh-panel .lh-quick::-moz-selection { background: transparent; color: #000; }
                   </style>
